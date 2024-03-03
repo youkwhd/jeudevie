@@ -19,7 +19,6 @@ class << Jeudevie
     loop do
       Jeudevie::_print()
       Jeudevie::update()
-      print "\n"
 
       sleep 0.5
     end
@@ -46,5 +45,7 @@ class << Jeudevie
 
   def _print()
     @grid.print()
+    print "\x1b[#{@grid.cols()}A"
+    print "\x1b[#{@grid.rows()}D"
   end
 end
