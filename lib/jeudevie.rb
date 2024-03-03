@@ -65,7 +65,7 @@ class << Jeudevie
   end
 
   def _print()
-    @grid.print()
+    @grid.println()
     ANSI::Cursor::go_up(@grid.cols())
   end
 

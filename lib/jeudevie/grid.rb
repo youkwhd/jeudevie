@@ -24,13 +24,13 @@ module Jeudevie
       return @grid[col][row]
     end
 
-    def print()
+    def println()
       for cols in @grid do
         for row in cols do
           Jeudevie::Cell::print_cell(row)
         end
 
-        puts ""
+        print "\n"
       end
     end
 
