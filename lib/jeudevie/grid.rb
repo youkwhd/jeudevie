@@ -6,10 +6,22 @@ module Jeudevie
     @rows = 0
     @cols = 0
 
-    def initialize(rows, cols)
+    def initialize(cols, rows)
       @rows = rows
       @cols = cols
       @grid = Array.new(@cols) {Array.new(@rows, Jeudevie::Cell::DEAD)}
+    end
+
+    def cols()
+      return @cols
+    end
+
+    def rows()
+      return @rows
+    end
+
+    def get_cell(col, row)
+      return @grid[col][row]
     end
 
     def print()
@@ -22,26 +34,26 @@ module Jeudevie
       end
     end
 
-    def set_cell(row, col, cell)
+    def set_cell(col, row, cell)
       @grid[col][row] = cell
     end
 
-    def each_neighbors(row, col, &block)
+    def each_neighbors(col, row, &block)
       for i in 0...3 do
         _row = (row - 1) + i
         _col = col - 1
 
         if (_row >= 0 and _row < @rows) and _col >= 0
-          yield @grid[_col][_row]
+          yield @grid[_col][_row], _col, _row
         end
       end
 
       if (row - 1) >= 0
-        yield @grid[col][row - 1]
+        yield @grid[col][row - 1], col, row
       end
 
       if (row + 1) < @rows
-        yield @grid[col][row + 1]
+        yield @grid[col][row + 1], col, row
       end
 
       for i in 0...3 do
@@ -49,15 +61,15 @@ module Jeudevie
         _col = col + 1
 
         if (_row >= 0 and _row < @rows) and _col < @cols
-          yield @grid[_col][_row]
+          yield @grid[_col][_row], _col, _row
         end
       end
     end
 
-    def alive_neighbors_count(row, col)
+    def alive_neighbors_count(col, row)
       count = 0
 
-      each_neighbors(row, col) { |neighbor|
+      each_neighbors(col, row) { |neighbor, col, row|
         if neighbor == Jeudevie::Cell::ALIVE
           count += 1
         end
