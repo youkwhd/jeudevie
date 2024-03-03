@@ -1,3 +1,4 @@
+require "ansi"
 require "jeudevie/cell"
 require "jeudevie/grid"
 
@@ -34,6 +35,7 @@ class << Jeudevie
 
   def simulate()
     Jeudevie::init()
+    Jeudevie::__handle_sigint()
 
     loop do
       Jeudevie::_print()
@@ -64,7 +66,21 @@ class << Jeudevie
 
   def _print()
     @grid.print()
-    print "\x1b[#{@grid.cols()}A"
-    print "\x1b[#{@grid.rows()}D"
+    ANSI::Cursor::go_up(@grid.cols())
+  end
+
+  def __handle_sigint()
+    ANSI::Cursor::hide()
+    Signal.trap("INT") {
+      ANSI::Cursor::show()
+
+      # -1 because of newline
+      ANSI::Cursor::go_down(@grid.cols() - 1)
+
+      # -1 for newline and -1 to get the cursor inside the grid
+      ANSI::Cursor::go_right(@grid.rows() - 2)
+
+      exit(0)
+    }
   end
 end
