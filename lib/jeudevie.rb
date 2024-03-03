@@ -6,6 +6,11 @@ class << Jeudevie
 
   def init()
     @grid = Jeudevie::Grid::new(5, 5)
+
+    # @grid.set_cell(0, 0, Jeudevie::Cell::ALIVE)
+    # @grid.set_cell(1, 0, Jeudevie::Cell::ALIVE)
+    # @grid.set_cell(2, 0, Jeudevie::Cell::ALIVE)
+
     @grid.set_cell(0, 1, Jeudevie::Cell::ALIVE)
     @grid.set_cell(1, 2, Jeudevie::Cell::ALIVE)
     @grid.set_cell(2, 0, Jeudevie::Cell::ALIVE)

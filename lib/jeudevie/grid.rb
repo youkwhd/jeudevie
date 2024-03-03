@@ -40,29 +40,20 @@ module Jeudevie
 
     def each_neighbors(col, row, &block)
       for i in 0...3 do
-        _row = (row - 1) + i
-        _col = col - 1
+        _row = ((row - 1) + i) % @rows
+        _col = (col - 1) % @cols
 
-        if (_row >= 0 and _row < @rows) and _col >= 0
-          yield @grid[_col][_row], _col, _row
-        end
+        yield @grid[_col][_row], _col, _row
       end
 
-      if (row - 1) >= 0
-        yield @grid[col][row - 1], col, row
-      end
-
-      if (row + 1) < @rows
-        yield @grid[col][row + 1], col, row
-      end
+      yield @grid[col][(row - 1) % @rows], col, (row - 1) % @rows
+      yield @grid[col][(row + 1) % @rows], col, (row + 1) % @rows 
 
       for i in 0...3 do
-        _row = (row - 1) + i
-        _col = col + 1
+        _row = ((row - 1) + i) % @rows
+        _col = (col + 1) % @cols
 
-        if (_row >= 0 and _row < @rows) and _col < @cols
-          yield @grid[_col][_row], _col, _row
-        end
+        yield @grid[_col][_row], _col, _row
       end
     end
 
