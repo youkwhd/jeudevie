@@ -2,3 +2,8 @@ jeudevie
 ========
 
 Jeu de la vie en Ruby.
+
+Quick Start
+-----------
+    
+    ./bin/jeudevie
