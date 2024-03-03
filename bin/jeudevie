@@ -6,5 +6,5 @@ require "jeudevie"
 
 # Script entry point
 if __FILE__ == $0
-  Jeudevie::simulate
+  Jeudevie::simulate()
 end
