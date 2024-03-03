@@ -3,6 +3,12 @@ jeudevie
 
 Jeu de la vie à Ruby.
 
+Prerequisite
+------------
+
+- Ruby interpreter
+- ANSI compatible terminal
+
 Quick Start
 -----------
     
