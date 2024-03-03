@@ -5,17 +5,25 @@ class << Jeudevie
   @grid = nil
 
   def init()
-    @grid = Jeudevie::Grid::new(5, 5)
+    @grid = Jeudevie::Grid::new(6, 6)
 
     # @grid.set_cell(0, 0, Jeudevie::Cell::ALIVE)
     # @grid.set_cell(1, 0, Jeudevie::Cell::ALIVE)
     # @grid.set_cell(2, 0, Jeudevie::Cell::ALIVE)
 
-    @grid.set_cell(0, 1, Jeudevie::Cell::ALIVE)
-    @grid.set_cell(1, 2, Jeudevie::Cell::ALIVE)
-    @grid.set_cell(2, 0, Jeudevie::Cell::ALIVE)
     @grid.set_cell(2, 1, Jeudevie::Cell::ALIVE)
-    @grid.set_cell(2, 2, Jeudevie::Cell::ALIVE)
+    @grid.set_cell(3, 1, Jeudevie::Cell::ALIVE)
+    @grid.set_cell(4, 2, Jeudevie::Cell::ALIVE)
+
+    @grid.set_cell(1, 3, Jeudevie::Cell::ALIVE)
+    @grid.set_cell(2, 4, Jeudevie::Cell::ALIVE)
+    @grid.set_cell(3, 4, Jeudevie::Cell::ALIVE)
+
+    # @grid.set_cell(0, 1, Jeudevie::Cell::ALIVE)
+    # @grid.set_cell(1, 2, Jeudevie::Cell::ALIVE)
+    # @grid.set_cell(2, 0, Jeudevie::Cell::ALIVE)
+    # @grid.set_cell(2, 1, Jeudevie::Cell::ALIVE)
+    # @grid.set_cell(2, 2, Jeudevie::Cell::ALIVE)
   end
 
   def simulate()
