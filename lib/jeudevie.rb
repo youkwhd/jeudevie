@@ -1,6 +1,5 @@
 require "jeudevie/cell"
 require "jeudevie/grid"
-require "jeudevie/game"
 
 class << Jeudevie
   @grid = nil
