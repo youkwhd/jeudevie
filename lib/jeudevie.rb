@@ -75,10 +75,10 @@ class << Jeudevie
     Signal.trap("INT") {
       ANSI::Cursor::show()
 
-      # -1 because of newline
+      # -1 for cursor
       ANSI::Cursor::go_down(@grid.cols() - 1)
 
-      # -1 for newline and -1 to get the cursor onto the grid
+      # -1 for cursor and -1 to get the cursor onto the grid
       ANSI::Cursor::go_right(@grid.rows() - 2)
 
       exit(0)
