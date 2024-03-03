@@ -34,21 +34,9 @@ class << Jeudevie
 
         case @grid.get_cell(i, j)
         when Jeudevie::Cell::ALIVE
-          if alive_count < 2
-            _grid.set_cell(i, j, Jeudevie::Cell::DEAD)
-          end
-
-          if alive_count == 2 or alive_count == 3
-            _grid.set_cell(i, j, Jeudevie::Cell::ALIVE)
-          end
-
-          if alive_count > 3
-            _grid.set_cell(i, j, Jeudevie::Cell::DEAD)
-          end
+          _grid.set_cell(i, j, alive_count.between?(2, 3) ? Jeudevie::Cell::ALIVE : Jeudevie::Cell::DEAD)
         when Jeudevie::Cell::DEAD
-          if alive_count == 3
-            _grid.set_cell(i, j, Jeudevie::Cell::ALIVE)
-          end
+          _grid.set_cell(i, j, alive_count == 3 ? Jeudevie::Cell::ALIVE : Jeudevie::Cell::DEAD)
         end
       end
     end
