@@ -9,11 +9,6 @@ Prerequisite
 - Ruby interpreter
 - ANSI compatible terminal
 
-Dependencies
-------------
-
-- curses (optional)
-
 Quick Start
 -----------
     

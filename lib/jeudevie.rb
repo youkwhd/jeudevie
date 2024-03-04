@@ -1,10 +1,3 @@
-begin
-  require "curses"
-  USE_CURSES = 1
-rescue LoadError
-  USE_CURSES = 0
-end
-
 require "ansi"
 require "jeudevie/cell"
 require "jeudevie/grid"
