@@ -2,12 +2,27 @@
 
 $LOAD_PATH[0, 0] = File.join(File.dirname(__FILE__), "..", "lib")
 
+require "optparse"
 require "jeudevie"
-
-WIDTH = 6
-HEIGHT = 6
 
 # Script entry point
 if __FILE__ == $0
-  Jeudevie::simulate WIDTH, HEIGHT
+  args = {
+    width: 6,
+    height: 6,
+  }
+
+  OptionParser.new do |arg|
+    arg.on("-w WIDTH") { |val|
+      val = val.delete_prefix "="
+      args[:width] = val.to_i
+    }
+
+    arg.on("-h HEIGHT") { |val|
+      val = val.delete_prefix "="
+      args[:height] = val.to_i
+    }
+  end.parse!
+
+  Jeudevie::simulate args[:width], args[:height]
 end
