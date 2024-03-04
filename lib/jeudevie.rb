@@ -44,6 +44,8 @@ class << Jeudevie
     Jeudevie::init()
     Jeudevie::__handle_sigint()
 
+    ANSI::Cursor::hide()
+
     loop do
       Jeudevie::_print()
       Jeudevie::update()
@@ -77,8 +79,6 @@ class << Jeudevie
   end
 
   def __handle_sigint()
-    ANSI::Cursor::hide()
-
     Signal.trap("INT") {
       ANSI::Cursor::show()
 
