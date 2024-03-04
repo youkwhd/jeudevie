@@ -4,7 +4,10 @@ $LOAD_PATH[0, 0] = File.join(File.dirname(__FILE__), "..", "lib")
 
 require "jeudevie"
 
+WIDTH = 6
+HEIGHT = 6
+
 # Script entry point
 if __FILE__ == $0
-  Jeudevie::simulate()
+  Jeudevie::simulate WIDTH, HEIGHT
 end

@@ -5,8 +5,8 @@ require "jeudevie/grid"
 class << Jeudevie
   @grid = nil
 
-  def init()
-    @grid = Jeudevie::Grid::new(6, 6)
+  def init(width, height)
+    @grid = Jeudevie::Grid::new(height, width)
 
     @grid.set_cell(0, 1, Jeudevie::Cell::ALIVE)
     @grid.set_cell(1, 2, Jeudevie::Cell::ALIVE)
@@ -15,8 +15,8 @@ class << Jeudevie
     @grid.set_cell(2, 2, Jeudevie::Cell::ALIVE)
   end
 
-  def simulate()
-    Jeudevie::init()
+  def simulate(width, height)
+    Jeudevie::init(width, height)
     Jeudevie::__handle_sigint()
 
     ANSI::Cursor::hide()
