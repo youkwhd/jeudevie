@@ -14,24 +14,6 @@ class << Jeudevie
 
   def init()
     @grid = Jeudevie::Grid::new(6, 6)
-    # @grid = Jeudevie::Grid::new(40, 80)
-
-    # @grid.set_cell(0, 0, Jeudevie::Cell::ALIVE)
-    # @grid.set_cell(1, 0, Jeudevie::Cell::ALIVE)
-    # @grid.set_cell(2, 0, Jeudevie::Cell::ALIVE)
-
-    # @grid.set_cell(2, 1, Jeudevie::Cell::ALIVE)
-    # @grid.set_cell(3, 1, Jeudevie::Cell::ALIVE)
-    # @grid.set_cell(4, 2, Jeudevie::Cell::ALIVE)
-    # @grid.set_cell(1, 3, Jeudevie::Cell::ALIVE)
-    # @grid.set_cell(2, 4, Jeudevie::Cell::ALIVE)
-    # @grid.set_cell(3, 4, Jeudevie::Cell::ALIVE)
-
-    # @grid.set_cell(1 + 30, 2 + 30, Jeudevie::Cell::ALIVE)
-    # @grid.set_cell(1 + 30, 3 + 30, Jeudevie::Cell::ALIVE)
-    # @grid.set_cell(2 + 30, 1 + 30, Jeudevie::Cell::ALIVE)
-    # @grid.set_cell(2 + 30, 2 + 30, Jeudevie::Cell::ALIVE)
-    # @grid.set_cell(3 + 30, 2 + 30, Jeudevie::Cell::ALIVE)
 
     @grid.set_cell(0, 1, Jeudevie::Cell::ALIVE)
     @grid.set_cell(1, 2, Jeudevie::Cell::ALIVE)
@@ -55,10 +37,10 @@ class << Jeudevie
   end
 
   def update()
-    _grid = Jeudevie::Grid::new(@grid.cols(), @grid.rows())
+    _grid = Jeudevie::Grid::new(@grid.cols, @grid.rows)
 
-    for i in (0..._grid.cols()) do
-      for j in (0..._grid.rows()) do
+    for i in (0..._grid.cols) do
+      for j in (0..._grid.rows) do
         alive_count = @grid.alive_neighbors_count(i, j)
 
         case @grid.get_cell(i, j)
@@ -75,7 +57,7 @@ class << Jeudevie
 
   def _print()
     @grid.println()
-    ANSI::Cursor::go_up(@grid.cols())
+    ANSI::Cursor::go_up(@grid.cols)
   end
 
   def __handle_sigint()
@@ -83,10 +65,10 @@ class << Jeudevie
       ANSI::Cursor::show()
 
       # -1 for cursor
-      ANSI::Cursor::go_down(@grid.cols() - 1)
+      ANSI::Cursor::go_down(@grid.cols - 1)
 
       # -1 for cursor and -1 to get the cursor onto the grid
-      ANSI::Cursor::go_right(@grid.rows() - 2)
+      ANSI::Cursor::go_right(@grid.rows - 2)
 
       exit(0)
     }
