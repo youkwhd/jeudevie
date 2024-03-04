@@ -22,7 +22,7 @@ class << Jeudevie
     ANSI::Cursor::hide()
 
     loop do
-      Jeudevie::_print()
+      Jeudevie::draw()
       Jeudevie::update()
 
       sleep 0.5
@@ -48,7 +48,7 @@ class << Jeudevie
     @grid = _grid 
   end
 
-  def _print()
+  def draw()
     @grid.println()
     ANSI::Cursor::go_up(@grid.cols)
   end
