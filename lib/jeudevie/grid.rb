@@ -3,21 +3,17 @@ require "jeudevie/cell"
 module Jeudevie
   class Grid
     @grid = nil
-    @rows = 0
-    @cols = 0
 
     def initialize(cols, rows)
-      @rows = rows
-      @cols = cols
-      @grid = Array.new(@cols) {Array.new(@rows, Jeudevie::Cell::DEAD)}
+      @grid = Array.new(cols) {Array.new(rows, Jeudevie::Cell::DEAD)}
     end
 
     def cols()
-      return @cols
+      return @grid.length
     end
 
     def rows()
-      return @rows
+      return @grid[0].length
     end
 
     def get_cell(col, row)
@@ -40,18 +36,21 @@ module Jeudevie
 
     def each_neighbors(col, row, &block)
       for i in 0...3 do
-        _row = ((row - 1) + i) % @rows
-        _col = (col - 1) % @cols
+        _row = ((row - 1) + i) % rows
+        _col = (col - 1) % cols
 
         yield @grid[_col][_row], _col, _row
       end
 
-      yield @grid[col][(row - 1) % @rows], col, (row - 1) % @rows
-      yield @grid[col][(row + 1) % @rows], col, (row + 1) % @rows 
+      _row = (row - 1) % rows
+      yield @grid[col][_row], col, _row
+
+      _row = (row + 1) % rows
+      yield @grid[col][_row], col, _row
 
       for i in 0...3 do
-        _row = ((row - 1) + i) % @rows
-        _col = (col + 1) % @cols
+        _row = ((row - 1) + i) % rows
+        _col = (col + 1) % cols
 
         yield @grid[_col][_row], _col, _row
       end
