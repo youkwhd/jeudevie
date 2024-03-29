@@ -15,6 +15,10 @@ class << Jeudevie
     @grid.set_cell(2, 2, Jeudevie::Cell::ALIVE)
   end
 
+  def init_from_matrix(matrix)
+    @grid = Jeudevie::Grid::new(matrix)
+  end
+
   def simulate(width, height)
     Jeudevie::init(width, height)
     Jeudevie::__handle_sigint()

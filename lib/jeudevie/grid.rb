@@ -4,8 +4,14 @@ module Jeudevie
   class Grid
     @grid = nil
 
-    def initialize(cols, rows)
-      @grid = Array.new(cols) {Array.new(rows, Jeudevie::Cell::DEAD)}
+    def initialize(*args)
+      if args.length == 1
+        @grid = args[0]
+      elsif args.length == 2
+        @grid = Array.new(args[0]) {Array.new(args[0], Jeudevie::Cell::DEAD)}
+      else
+        raise ArgumentError, "No definition based of #{args.length} args"
+      end
     end
 
     def cols()
